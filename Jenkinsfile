@@ -12,9 +12,9 @@ pipeline {
         stage('Docker Image Build & Test') {
             agent { label 'build' }
             steps {
-                sh 'docker image build -t spc:latest .'
-                sh 'docker tag spc:latest public.ecr.aws/u1z2h9e6/spc:latest'
-                sh 'docker push public.ecr.aws/u1z2h9e6/spc:latest'
+                sh 'docker build -t spring .'
+                sh 'docker tag spring:latest 751353218916.dkr.ecr.ap-south-1.amazonaws.com/spring:latest'
+                sh 'docker push 751353218916.dkr.ecr.ap-south-1.amazonaws.com/spring:latest'
             }
         }
       }
