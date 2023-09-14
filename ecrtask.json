@@ -6,6 +6,13 @@
         "image": "751353218916.dkr.ecr.ap-south-1.amazonaws.com/spring:latest",
         "memory": 3000,
         "cpu": 256,
+        "portMappings": [
+            {
+              "hostPort": 8000,
+              "protocol": "tcp",
+              "containerPort": 8080
+            }
+          ],
         "essential": true
       }
     ]
