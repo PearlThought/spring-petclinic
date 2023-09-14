@@ -20,8 +20,7 @@ pipeline {
         stage('Deploy through ECS'){
           agent{label 'build'}
           steps{
-            sh 'aws ecs register-task-definition --cli-input-json file://ecrtask.json'
-            sh 'aws ecs create-service --cluster bittu --service-name my-ecs-service2 --task-definition my-ecs-task --desired-count 2'
+            sh 'docker container run -d -p 30001:8080 751353218916.dkr.ecr.ap-south-1.amazonaws.com/spring:latest'
           }
         }
       }
