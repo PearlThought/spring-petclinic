@@ -5,7 +5,7 @@ pipeline {
         stage('vcs') {
             agent { label 'build' }
             steps{
-                    git url: 'https://github.com/Bharatkumar5690/spring-petclinic.git',
+                    git url: 'https://github.com/PearlThought/spring-petclinic.git',
                         branch: 'dev'
             }
         }
