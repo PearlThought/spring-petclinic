@@ -21,7 +21,7 @@ pipeline {
           agent{label 'build'}
           steps{
             sh 'aws ecs register-task-definition --cli-input-json file://ecrtask.json'
-            sh 'aws ecs create-service --cluster my-ecs-cluster --service-name my-ecs-service --task-definition my-ecs-task --desired-count 2'
+            sh 'aws ecs create-service --cluster bittu --service-name my-ecs-service --task-definition my-ecs-task --desired-count 2'
           }
         }
       }
