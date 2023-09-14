@@ -38,8 +38,7 @@ pipeline {
                     }
                 }
             }
-        }
-        }       
+        }     
         stage('Deploy '){
           agent{label 'build'}
           steps{
@@ -68,7 +67,7 @@ pipeline {
               }
           }
         
+        }
     }
-      
-  }
-
+    
+}
