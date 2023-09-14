@@ -17,5 +17,12 @@ pipeline {
                 sh 'docker push 751353218916.dkr.ecr.ap-south-1.amazonaws.com/spring:latest'
             }
         }
+        stage('Deploy through ECS'){
+          agent{label 'build'}
+          steps{
+            sh 'aws ecs register-task-definition --cli-input-json file://ecrtask.json'
+            sh 'aws ecs create-service --cluster my-ecs-cluster --service-name my-ecs-service --task-definition my-ecs-task --desired-count 2'
+          }
+        }
       }
 }

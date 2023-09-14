@@ -1,0 +1,12 @@
+{
+    "family": "my-ecs-task",
+    "containerDefinitions": [
+      {
+        "name": "my-container",
+        "image": "751353218916.dkr.ecr.ap-south-1.amazonaws.com/spring:latest",
+        "memory": 3000,
+        "cpu": 256,
+        "essential": true
+      }
+    ]
+  }
