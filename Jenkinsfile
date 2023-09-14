@@ -1,22 +1,18 @@
 pipeline{
-    agent{ label 'spc' }
-    tools{ jdk 'jdk17'}
-    stages{
-        stage('vcs'){
-            steps{
-              git url: 'https://github.com/tejaswini1811/spring-petclinic.git',
-                  branch: 'main'
-            }
-        }
-        stage('build'){
-            steps{
-                sh './mvnw package'
-            }
-        }
-        stage('deploy'){
-            steps{
-                sh 'java -jar target/*.jar'
-            }
+  agent {label'docker'}
+   triggers { pollSCM('* * * * *') }
+  stages{
+    stage('vcs'){
+      steps{
+        git url: 'https://github.com/chaitanyasagile/spring-petclinic.git',
+            branch: 'dev'
+      }
+    }
+    stage('deploy'){
+        steps{
+            sh 'docker image build -t myspc:1.0 .'
+            sh  'docker container run -d --name spc -p 4200:8080 myspc:1.0'
         }
     }
-}
+  }
+}  
