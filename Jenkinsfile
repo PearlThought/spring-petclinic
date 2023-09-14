@@ -8,11 +8,15 @@ pipeline{
             branch: 'dev'
       }
     }
-    stage('deploy'){
+    stage('build'){
         steps{
-            sh 'docker image build -t myspc:1.0 .'
-            sh  'docker container run -d --name spc -p 4200:8080 myspc:1.0'
+            sh './mvnw package'            
         }
+    }
+    stage('deploy'){
+      steps{
+        sh 'nohup java -jar target/*.jar &'
+      }
     }
   }
 }  
